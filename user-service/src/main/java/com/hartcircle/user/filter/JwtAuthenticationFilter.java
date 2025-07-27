@@ -29,7 +29,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private JwtClient jwtClient;
 
     @Autowired
-    @Lazy
     private UserRepository userRepository;
 
     @Override
@@ -40,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String authHeader = request.getHeader("Authorization");
         final String token;
-        final String userNIC;
+        final String nic;
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
@@ -48,12 +47,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         token = authHeader.substring(7);
-        userNIC = jwtClient.extractUserNIC(token);
+        nic = jwtClient.extractNic(token);
 
-        if (userNIC != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            User user = userRepository.findByNic(userNIC).orElse(null);
+        if (nic != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            User user = userRepository.findByNic(nic).orElse(null);
 
-            if (user != null && jwtClient.validateToken(token, userNIC)) {
+            if (user != null && jwtClient.validateToken(token, nic)) {
                 UserDetails userDetails = new org.springframework.security.core.userdetails.User(
                         user.getNic(),
                         user.getPassword(),

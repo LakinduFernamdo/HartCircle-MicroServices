@@ -2,53 +2,59 @@ package com.hartcircle.user.service;
 
 import com.hartcircle.jwt.Dto.JwtRequest;
 import com.hartcircle.jwt.Dto.JwtResponse;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+
 
 @Service
 public class JwtClient {
 
-    @Value("${jwt.service.url}")
-    private String jwtServiceUrl;
+    @Value("${jwt.secret}")
+    private String secret;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final long EXPIRATION_TIME = 1000 * 60 * 60;
 
-    public String generateToken(String userNIC) {
-        JwtRequest request = new JwtRequest();
-        request.setUserNIC(userNIC);
-
-        JwtResponse response = restTemplate.postForObject(
-                jwtServiceUrl + "/jwt/generate",
-                request,
-                JwtResponse.class
-        );
-
-        return response.getToken();
+    public String generateToken(String nic) {
+        return Jwts.builder()
+                .setSubject(nic)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
-    public boolean validateToken(String token, String userNIC) {
-        JwtRequest request = new JwtRequest();
-        request.setToken(token);
-        request.setUserNIC(userNIC);
-
-        Boolean isValid = restTemplate.postForObject(
-                jwtServiceUrl + "/jwt/validate",
-                request,
-                Boolean.class
-        );
-
-        return Boolean.TRUE.equals(isValid);
+    public boolean validateToken(String token, String nic) {
+        try {
+            Claims claims = getClaims(token);
+            return claims.getSubject().equals(nic) && claims.getExpiration().after(new Date());
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public String extractUserNIC(String token) {
-        JwtRequest request = new JwtRequest();
-        request.setToken(token);
+    public String extractNic(String token) {
+        return getClaims(token).getSubject();
+    }
 
-        return restTemplate.postForObject(
-                jwtServiceUrl + "/jwt/extract",
-                request,
-                String.class
-        );
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    private Key getSigningKey() {
+        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
