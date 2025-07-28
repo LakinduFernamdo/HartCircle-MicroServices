@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
-
+//Generate JWT tokens + Validate+ Extract userNIC
 
 @Service
 public class JwtClient {

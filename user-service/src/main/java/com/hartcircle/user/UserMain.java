@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = "com.hartcircle.user.entity")
 @ComponentScan(basePackages = {
         "com.hartcircle.user",
-        "com.hartcircle.jwt.Service" // or just "com.hartcircle.jwt"
+        "com.hartcircle.jwt.Service"
 })
 
 
