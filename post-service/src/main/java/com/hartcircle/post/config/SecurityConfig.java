@@ -21,7 +21,10 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("api/v1/user/CreatePost").authenticated()
+                        .requestMatchers(
+                                "/api/v1/user/CreatePost",
+                                "/api/v1/post/image/**"
+                        ).authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

@@ -6,6 +6,7 @@ import com.hartcircle.*;
 
 import java.sql.Date;
 import java.sql.Time;
+
 import com.hartcircle.user.entity.User;
 
 
@@ -43,11 +44,13 @@ public class Post {
     @Column(name = "Description")
     private String description;
 
-    @Column(name="Image1",columnDefinition = "LONGBLOB")
+    @Column(name = "Image1", columnDefinition = "LONGBLOB")
     private byte[] image1;
 
-    @Column(name="Image2",columnDefinition = "LONGBLOB")
+    @Column(name = "Image2", columnDefinition = "LONGBLOB")
     private byte[] image2;
+
+
 
     public String getDescription() {
         return description;

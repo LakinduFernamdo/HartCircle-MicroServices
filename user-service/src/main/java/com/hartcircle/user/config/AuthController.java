@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//read the token from the HTTP request.use that token to verify it, and return the NIC if it’s valid.check token is expired or not which created by jwtclient.
 @RestController
 @RequestMapping("/auth")
+
 public class AuthController {
 
     @Autowired

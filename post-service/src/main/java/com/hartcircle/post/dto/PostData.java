@@ -1,13 +1,13 @@
 package com.hartcircle.post.dto;
 
 
+import com.hartcircle.user.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Time;
 import java.sql.Date;
 
 public class PostData {
-
 
 
     private Integer postID;
@@ -20,6 +20,7 @@ public class PostData {
     private String description;
     private MultipartFile image1;
     private MultipartFile image2;
+
 
     public MultipartFile getImage1() {
         return image1;
@@ -53,7 +54,6 @@ public class PostData {
     public void setImage2(MultipartFile image2) {
         this.image2 = image2;
     }
-
 
 
     public Time getStartTime() {

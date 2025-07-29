@@ -11,6 +11,9 @@ import org.springframework.web.client.RestTemplate;
 
 import org.springframework.http.*;
 
+//Talks to user-service to check if a token is valid.Call this endpoint.http://localhost:8080/auth/validate
+//This helps JwtAuthenticationFilter decide if the request is real or fake.
+
 @Service
 public class JwtClient {
 

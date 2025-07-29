@@ -22,7 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 
-//A custom filter that runs for every HTTP request.Read the JWT from Authorization header and Call JWTClient
+//A custom filter that runs for every HTTP request.Read the JWT from Authorization header and Call JWTClient.Run before any controller
 
 
 

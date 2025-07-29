@@ -11,4 +11,5 @@ public interface PostRepository extends JpaRepository<Post,Integer> {
     List<Post> findByItemTypeIgnoreCase(String itemType);
 
 
+
 }
