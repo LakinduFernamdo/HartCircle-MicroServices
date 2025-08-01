@@ -11,6 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
+//This class generate token for relevant time period
+
 @Service
 public class JwtService {
 
