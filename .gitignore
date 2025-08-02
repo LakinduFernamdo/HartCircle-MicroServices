@@ -16,5 +16,7 @@ Thumbs.db
 
 user-service/src/main/resources/application.properties
 post-service/src/main/resources/application.properties
-Bid-service/src/main/resources/application.properties
+bid-service/src/main/resources/application.properties
 sms-service/src/main/resources/application.properties
+discovery-service/main/resources/application.properties
+gateway-service/main/resources/application.properties
