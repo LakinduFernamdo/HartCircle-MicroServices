@@ -1,19 +1,20 @@
-# Maven
-/target/
+# Maven build
+**/target/
 
-# IntelliJ
+# IDEs
 .idea/
-*.iml
-
-# VS Code
 .vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
 
 # Logs
 *.log
 
-# Environment
-.env
+# System files
+.DS_Store
+Thumbs.db
+
+**/application.properties
+
+user-service/src/main/resources/application.properties
+post-service/src/main/resources/application.properties
+Bid-service/src/main/resources/application.properties
+sms-service/src/main/resources/application.properties
