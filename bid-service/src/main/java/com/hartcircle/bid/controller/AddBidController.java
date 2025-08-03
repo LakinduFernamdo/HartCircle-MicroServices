@@ -21,7 +21,7 @@ public class AddBidController {
                                            Authentication authentication) {
         try {
             String bidderNic = authentication.getName(); // from JWT
-            bidService.placeBid(postID, bidderNic, dto.getBid_Amount());
+            bidService.placeBid(postID, bidderNic, dto.getBidAmount());
             return ResponseEntity.ok("Bid placed successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

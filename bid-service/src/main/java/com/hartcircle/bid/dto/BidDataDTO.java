@@ -3,14 +3,14 @@ package com.hartcircle.bid.dto;
 public class BidDataDTO {
 
 
-    private Double Bid_Amount;
+    private Double bidAmount;
 
 
-    public Double getBid_Amount() {
-        return Bid_Amount;
+    public Double getBidAmount() {
+        return bidAmount;
     }
 
-    public void setBid_Amount(Double bid_Amount) {
-        Bid_Amount = bid_Amount;
+    public void setBidAmount(Double bidAmount) {
+        this.bidAmount = bidAmount;
     }
 }
