@@ -30,7 +30,7 @@ public class UpdateService {               //use register dto for update also
         User existingUser = userRepository.findById(userID)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Check if NIC is changed if change again check is it already availabale
+        // Check if NIC is changed
         if (!existingUser.getNic().equals(updateUserDTO.getNic())) {
             Optional<User> userWithSameNic = userRepository.findByNicAndNotUserId(updateUserDTO.getNic(), userID);
             if (userWithSameNic.isPresent()) {
@@ -38,18 +38,24 @@ public class UpdateService {               //use register dto for update also
             }
             existingUser.setNic(updateUserDTO.getNic());
         }
-        //user not change NIC
-        User user=new User();
-        user.setFirstName(updateUserDTO.getFirstName());
-        user.setLastName(updateUserDTO.getLastName());
-        user.setAddress(updateUserDTO.getAddress());
-        user.setEmail(updateUserDTO.getEmail());
-        String encodedPassword = passwordEncoder.encode(updateUserDTO.getPassword());
-        user.setPassword(encodedPassword);
-        user.setNic(updateUserDTO.getNic());
-        user.setDOB(updateUserDTO.getDOB());
-        user.setTpNumber(updateUserDTO.getTpNumber());
-        user.setImage(updateUserDTO.getImage().getBytes());
-        userRepository.save(user);
+
+        existingUser.setFirstName(updateUserDTO.getFirstName());
+        existingUser.setLastName(updateUserDTO.getLastName());
+        existingUser.setAddress(updateUserDTO.getAddress());
+        existingUser.setEmail(updateUserDTO.getEmail());
+        existingUser.setTpNumber(updateUserDTO.getTpNumber());
+        existingUser.setDOB(updateUserDTO.getDOB());
+
+        if (updateUserDTO.getPassword() != null && !updateUserDTO.getPassword().isBlank()) {
+            String encodedPassword = passwordEncoder.encode(updateUserDTO.getPassword());
+            existingUser.setPassword(encodedPassword);
+        }
+
+        if (updateUserDTO.getImage() != null && !updateUserDTO.getImage().isEmpty()) {
+            existingUser.setImage(updateUserDTO.getImage().getBytes());
+        }
+
+        userRepository.save(existingUser);
     }
+
 }
