@@ -6,7 +6,9 @@ import com.hartcircle.post.entity.Post;
 import com.hartcircle.post.repo.PostRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 
@@ -21,8 +23,15 @@ public class PostUpdateService {
 
     public void UpdatePostData(@NotNull PostUpdateDTO postUpdateDTO, Integer postID, String userNIC) throws IOException {
         //check is post exist
+
         Post existPost = postRepository.findByPostID(postID).
                 orElseThrow(() -> new RuntimeException("Post not found !"));
+
+        //check is login user edit his own posts
+        if(!existPost.getUserNIC().equals(userNIC)){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You can update your posts only.");
+
+        }
         existPost.setStartTime(postUpdateDTO.getStartTime());
         existPost.setEndDate(postUpdateDTO.getEndDate());
         existPost.setStartDate(postUpdateDTO.getStartDate());
