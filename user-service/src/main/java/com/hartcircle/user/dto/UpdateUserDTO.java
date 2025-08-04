@@ -1,53 +1,19 @@
-package com.hartcircle.user.entity;
+package com.hartcircle.user.dto;
 
-import jakarta.persistence.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 
-@Entity
-@Table(name = "userstest") // Change to your actual table name if needed
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID") // Match column name
-    private Integer userId;
-
-    @Column(name = "F_Name")
+public class UpdateUserDTO {
     private String firstName;
-
-    @Column(name = "L_Name")
     private String lastName;
-
-    @Column(name = "Address")
     private String address;
-
-    @Column(name = "TPNumber")
-    private String tpNumber;
-
-    @Column(name = "Email")
-    private String email;
-
-    @Column(name = "DOB")
     private Date DOB;
-
-    @Column(name = "NIC", unique = true, nullable = false)
+    private String tpNumber;
+    private String email;
     private String nic;
-
-    @Column(name = "Password")
     private String password;
-
-    @Lob
-    @Column(name = "Image", columnDefinition = "LONGBLOB")
-    private byte[] image;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    private MultipartFile image;
 
     public String getFirstName() {
         return firstName;
@@ -73,6 +39,14 @@ public class User {
         this.address = address;
     }
 
+    public Date getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(Date DOB) {
+        this.DOB = DOB;
+    }
+
     public String getTpNumber() {
         return tpNumber;
     }
@@ -87,14 +61,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
     }
 
     public String getNic() {
@@ -113,11 +79,11 @@ public class User {
         this.password = password;
     }
 
-    public byte[] getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 }

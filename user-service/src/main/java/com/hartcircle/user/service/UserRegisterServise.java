@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class UserRegisterServise {
@@ -23,6 +24,12 @@ public class UserRegisterServise {
     }
 
     public void registerUser(@org.jetbrains.annotations.NotNull UserRegisterDTO userDTO) throws IOException {
+
+        //check nic already exist
+        Optional<User> existingUser = userRepository.findByNic(userDTO.getNic());
+        if (existingUser.isPresent()) {
+            throw new RuntimeException("NIC already registered. Please use a different NIC.");
+        }
         User user=new User();
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
