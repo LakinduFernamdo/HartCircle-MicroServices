@@ -40,13 +40,14 @@ public class BidService {
         if (bidderNic.equals(postOwnerNic)) {
             throw new RuntimeException("You cannot bid on your own post.");
         }
+        LocalDate todayDate = LocalDate.now();
 
         BidInformation bid = new BidInformation();
         bid.setPostID(postID);
         bid.setBidderNIC(bidderNic);
         bid.setPostOwnerNIC(postOwnerNic);
         bid.setAmount(bidAmount);
-        bid.setBidDate(LocalDate.now());
+        bid.setBidDate(Date.valueOf(todayDate));
         bid.setBidTime(new Time(System.currentTimeMillis()));
 
         bidRepo.save(bid);

@@ -34,4 +34,12 @@ public class PostController {
         return ResponseEntity.ok(exists);
     }
 
+    @GetMapping("/getPostData/{postId}")
+    public ResponseEntity<Post> getPostById(@PathVariable("postId") Integer postId) {
+        return postRepository.findById(postId)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found"));
+    }
+
+
 }

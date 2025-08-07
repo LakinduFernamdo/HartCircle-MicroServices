@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "BidInfo")
@@ -28,7 +27,7 @@ public class BidInformation {
 
 
     @Column(name = "BidedDate")
-    private LocalDate BidDate;
+    private Date BidDate;
 
     @Column(name = "BidedTime")
     private Time BidTime;
@@ -68,11 +67,11 @@ public class BidInformation {
         this.postOwnerNIC = postOwnerNIC;
     }
 
-    public LocalDate getBidDate() {
+    public Date getBidDate() {
         return BidDate;
     }
 
-    public void setBidDate(LocalDate bidDate) {
+    public void setBidDate(Date bidDate) {
         BidDate = bidDate;
     }
 
