@@ -8,9 +8,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 
 
 import java.nio.charset.StandardCharsets;
@@ -84,5 +88,26 @@ public class JwtClient {
     private Key getTempSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
+    //logout(listen JwtController class)
+    public boolean logout(String token) {
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + token);
+            HttpEntity<Void> request = new HttpEntity<>(headers);
+
+            ResponseEntity<String> response = restTemplate.exchange(
+                    jwtServiceUrl + "/jwt/auth/logout",
+                    HttpMethod.POST,
+                    request,
+                    String.class
+            );
+
+            return response.getStatusCode().is2xxSuccessful();
+        } catch (Exception e) {
+            System.out.println("Logout failed: " + e.getMessage());
+            return false;
+        }
+    }
+
 }
 

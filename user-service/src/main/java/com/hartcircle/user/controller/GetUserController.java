@@ -30,12 +30,12 @@ public class GetUserController {
         try {
             authentication = SecurityContextHolder.getContext().getAuthentication();
 
-            if (authentication == null || !authentication.isAuthenticated()) {
-                throw new RuntimeException("User is not authenticated");
+            if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized or logged out");
             }
 
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            String nic = userDetails.getUsername();
+            UserDetails userdetails = (UserDetails) authentication.getPrincipal();
+            String nic = userdetails.getUsername();
             UserSummaryDTO userDto = getUserInfo.getUserData(nic);
             return ResponseEntity.ok(userDto);
         } catch (Exception e) {

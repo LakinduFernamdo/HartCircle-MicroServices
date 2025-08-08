@@ -28,5 +28,16 @@ public class JwtController {
         boolean isValid = jwtService.validateToken(request.getToken(), request.getUserNIC());
         return ResponseEntity.ok(isValid);
     }
+    @PostMapping("/auth/logout")
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String authHeader) {
+        if (authHeader != null) {
+            String token = authHeader.substring(7);
+            jwtService.blacklistToken(token);
+            return ResponseEntity.ok("Logged out successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid Authorization header");
+        }
+    }
+
 }
 
