@@ -25,6 +25,8 @@ public class SecurityConfig {
                                 "/api/v1/user/CreatePost",
                                 "/api/v1/post/image/**"
                         ).authenticated()
+                        .requestMatchers("/api/v1/post/publicWall").authenticated()
+                        .requestMatchers("/api/v1/post/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

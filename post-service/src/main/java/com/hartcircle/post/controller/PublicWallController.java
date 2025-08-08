@@ -6,6 +6,7 @@ import com.hartcircle.post.service.PublicWallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,9 @@ public class PublicWallController {
     private PublicWallService publicWallService;
 
     @GetMapping("/publicWall")
-    public ResponseEntity<List<PostViewDto>> getAllposts() {
+    public ResponseEntity<List<PostViewDto>> getAllposts(Authentication authentication) {
+        String nic = authentication.getName();
+        System.out.println("Authenticated user NIC: " + nic);
         try {
             List<PostViewDto> posts = publicWallService.getEachPostsfromDB();
             return ResponseEntity.ok(posts);
@@ -31,4 +34,3 @@ public class PublicWallController {
     }
 }
 
-po
