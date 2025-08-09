@@ -13,7 +13,7 @@ public interface PostRepository extends JpaRepository<Post,Integer> {
 
     List<Post> findByItemTypeIgnoreCase(String itemType);
     Optional<Post> findByPostID(Integer postID);
-
+    List<Post> findByUserNIC(String userNIC);
 
 
 }

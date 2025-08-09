@@ -7,7 +7,7 @@ import java.sql.Time;
 
 public class PostViewDto {
 
-    private Integer postId;
+
     private Time startTime;
     private Time endTime;
     private Date startDate;
@@ -20,8 +20,8 @@ public class PostViewDto {
 
     private UserSummaryDTO user;
 
-    public PostViewDto(Integer postId, Time startTime, Time endTime, Date startDate, Date endDate, Integer bidLimit, String itemType, String description, String image1Url, String image2Url, UserSummaryDTO user) {
-        this.postId = postId;
+    public PostViewDto(Time startTime, Time endTime, Date startDate, Date endDate, Integer bidLimit, String itemType, String description, String image1Url, String image2Url, UserSummaryDTO user) {
+
         this.startTime = startTime;
         this.endTime = endTime;
         this.startDate = startDate;
@@ -37,13 +37,7 @@ public class PostViewDto {
 
     }
 
-    public Integer getPostId() {
-        return postId;
-    }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
-    }
 
     public Time getStartTime() {
         return startTime;
