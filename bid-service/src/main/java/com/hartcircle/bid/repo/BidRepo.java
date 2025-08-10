@@ -10,7 +10,7 @@ import java.util.List;
 public interface BidRepo extends JpaRepository<BidInformation, Integer> {
 
     List<BidInformation> findByPostIDAndBidderNIC(int postID, String bidderNIC);
-
+    List<BidInformation>findByBidderNIC(String bidderNIC);
 
 
 }

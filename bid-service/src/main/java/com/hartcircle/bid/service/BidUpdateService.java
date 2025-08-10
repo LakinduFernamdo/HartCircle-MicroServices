@@ -26,7 +26,7 @@ public class BidUpdateService {
     @Autowired
     private PostClient postClient;
 
-    public void updateMyOwnBidByPostID(BidUpdateDTO bidUpdateDTO, int postID, String userNIC) {
+    public void updateMyOwnBidByPostID(BidUpdateDTO bidUpdateDTO, int postID, String userNIC,String authHeader) {
         // Validate bid amount
         if (bidUpdateDTO.getBidAmount() == null || bidUpdateDTO.getBidAmount() <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bid amount must be positive.");
@@ -42,7 +42,7 @@ public class BidUpdateService {
         BidInformation existBid = userBids.get(0);
 
         // Get post details
-        Post postDetails = postClient.getPostById(postID);
+        Post postDetails = postClient.getPostById(postID,authHeader);
 
         // Get current date and time
         LocalDate todayDate = LocalDate.now();
@@ -59,7 +59,7 @@ public class BidUpdateService {
         }
 
         // Get the post owner's NIC
-        String postOwnerNic = postClient.getPostOwnerNic(postID);
+        String postOwnerNic = postClient.getPostOwnerNic(postID,authHeader);
 
         // Update the bid
         existBid.setAmount(bidUpdateDTO.getBidAmount());

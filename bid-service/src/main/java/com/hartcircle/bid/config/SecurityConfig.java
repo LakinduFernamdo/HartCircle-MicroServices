@@ -24,8 +24,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/v1/bid/**").authenticated()
-
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/v1/bid/getMyBids/**").authenticated()
+                        .requestMatchers("/api/v1/post/summary/getPostview/**").authenticated()
+                        .requestMatchers("/api/v1/post/getPostData/**").authenticated()
+                        .requestMatchers("/api/v1/user/summary/**").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

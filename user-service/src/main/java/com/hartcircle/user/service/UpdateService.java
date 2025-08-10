@@ -44,6 +44,7 @@ public class UpdateService {               //use register dto for update also
         existingUser.setAddress(updateUserDTO.getAddress());
         existingUser.setEmail(updateUserDTO.getEmail());
         existingUser.setTpNumber(updateUserDTO.getTpNumber());
+        existingUser.setPassword(updateUserDTO.getPassword());
         existingUser.setDOB(updateUserDTO.getDOB());
 
         if (updateUserDTO.getPassword() != null && !updateUserDTO.getPassword().isBlank()) {

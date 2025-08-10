@@ -34,6 +34,7 @@ public class UserClient {
             return false;
         }
     }
+    //when post loaded the post owner also get
     public UserSummaryDTO getUserSummary(String nic) {
         try {
             String url = userServiceUrl + "/api/v1/user/summary/" + nic;
