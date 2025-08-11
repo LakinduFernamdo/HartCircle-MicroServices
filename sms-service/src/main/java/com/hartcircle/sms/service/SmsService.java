@@ -1,5 +1,6 @@
 package com.hartcircle.sms.service;
 
+
 import com.hartcircle.sms.config.TwilioConfig;
 import com.hartcircle.sms.dto.SmsDTO;
 import com.twilio.Twilio;
@@ -14,13 +15,16 @@ public class SmsService {
     @Autowired
     private TwilioConfig config;
 
-    public void sendSMS(SmsDTO dto) {
+    public String sendSMS(SmsDTO dto) {
         Twilio.init(config.getAccountSid(), config.getAuthToken());
 
-        Message.creator(
-                new PhoneNumber(dto.getTo()),
+        Message message = Message.creator(
+                new com.twilio.type.PhoneNumber(dto.getTo()),
                 new PhoneNumber(config.getPhoneNumber()),
                 dto.getBody()
         ).create();
+
+        return message.getSid();
     }
 }
+

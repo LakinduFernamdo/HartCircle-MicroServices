@@ -27,7 +27,7 @@ public class GetBidsFormeService {
             dto.setMyBidedTime(bid.getBidTime());
             dto.setMybidedDay(bid.getBidDate());
            // call post-service -> returns PostViewDto with user info already inside the PostViewDTO
-            PostViewDto postView=postClient.getPostSummary(bid.getPostID(),userNIC);
+            PostViewDto postView=postClient.getPostSummary(bid.getPostID(),authHeader);
             System.out.println("Fetched post for bidID " + bid.getBidID() + ": " + postView);
             // set post data directly
             dto.setPost(postView);
