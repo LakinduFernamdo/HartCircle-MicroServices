@@ -1,6 +1,3 @@
-# Maven build
-**/target/
-
 # IDEs
 .idea/
 .vscode/
@@ -12,20 +9,8 @@
 .DS_Store
 Thumbs.db
 
+# Ignore all application.properties files
 **/application.properties
 
-user-service/src/main/resources/application.properties
-post-service/src/main/resources/application.properties
-bid-service/src/main/resources/application.properties
-sms-service/src/main/resources/application.properties
-discovery-service/main/resources/application.properties
-gateway-service/main/resources/application.properties
-
-**/Target files
-
-user-service/target
-post-service/target
-bid-service/target
-sms-service/target
-discovery-service/target
-gateway-service/target
+# Ignore build output (target) folders
+target/

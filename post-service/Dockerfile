@@ -10,15 +10,15 @@ COPY . .
 RUN mvn clean install -N
 
 # Then build only jwt-service and its dependencies
-RUN mvn -pl bid-service -am clean package -DskipTests
+RUN mvn -pl post-service -am clean package -DskipTests
 
 # 🚀 Runtime stage
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/bid-service/target/*.jar app.jar
+COPY --from=builder /app/post-service/target/*.jar app.jar
 
-EXPOSE 8087
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

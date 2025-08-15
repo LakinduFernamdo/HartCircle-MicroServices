@@ -1,5 +1,6 @@
-com\hartcircle\jwt\Service\JwtService.class
 com\hartcircle\jwt\JwtMain.class
-com\hartcircle\jwt\Dto\JwtResponse.class
 com\hartcircle\jwt\Controller\JwtController.class
 com\hartcircle\jwt\Dto\JwtRequest.class
+com\hartcircle\jwt\Service\JwtService.class
+com\hartcircle\jwt\Dto\JwtResponse.class
+com\hartcircle\jwt\Controller\WebConfig.class

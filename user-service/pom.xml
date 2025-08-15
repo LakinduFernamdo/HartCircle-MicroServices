@@ -7,6 +7,7 @@
         <groupId>com.hartcircle</groupId>
         <artifactId>HartCircle-Microservices</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>user-service</artifactId>

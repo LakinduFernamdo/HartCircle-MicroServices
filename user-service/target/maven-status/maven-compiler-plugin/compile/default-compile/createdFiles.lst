@@ -1,7 +1,10 @@
+com\hartcircle\user\dto\UpdateUserDTO.class
+com\hartcircle\user\controller\UpdateUserController.class
 com\hartcircle\user\dto\LoginDTO.class
 com\hartcircle\user\controller\ForgotPWController.class
 com\hartcircle\user\dto\ForgotPWDto.class
 com\hartcircle\user\config\UserController.class
+com\hartcircle\user\service\UpdateService.class
 com\hartcircle\user\controller\RestTemplateConfig.class
 com\hartcircle\user\config\SecurityConfig.class
 com\hartcircle\user\repo\PasswordResetOTPRepository.class
@@ -16,11 +19,14 @@ com\hartcircle\user\controller\UserLogin.class
 com\hartcircle\user\entity\OTPData.class
 com\hartcircle\user\repo\UserRepository.class
 com\hartcircle\user\service\UserLoginServices.class
+com\hartcircle\user\service\DeleteUserService.class
 com\hartcircle\user\dto\UserRegisterDTO.class
 com\hartcircle\user\UserMain.class
+com\hartcircle\user\controller\DeleteUserController.class
 com\hartcircle\user\filter\JwtAuthenticationFilter.class
 com\hartcircle\user\service\ForgotPwService.class
 com\hartcircle\user\entity\User.class
 com\hartcircle\user\controller\UserImageController.class
 com\hartcircle\user\service\JwtClient.class
 com\hartcircle\user\config\WebConfig.class
+com\hartcircle\user\controller\LogoutController.class
