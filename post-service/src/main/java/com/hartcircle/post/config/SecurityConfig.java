@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/post/summary/getPostview").authenticated()
                         .requestMatchers("/api/v1/post/getPostData/**").authenticated()
                         .requestMatchers("/api/v1/user/summary/**").authenticated()
+                        .requestMatchers("/api/v1/post/ratethisPost/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

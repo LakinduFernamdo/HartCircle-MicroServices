@@ -24,6 +24,7 @@ public class PublicWallService {
 
         return posts.stream().map(post -> {
             PostViewDto dto = new PostViewDto();
+            dto.setPostID(post.getPostID());
             dto.setStartDate(post.getStartDate());
             dto.setStartTime(post.getStartTime());
             dto.setEndTime(post.getEndTime());

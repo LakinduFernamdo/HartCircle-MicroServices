@@ -43,6 +43,13 @@ public class UserController {
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping("/getuserID/{nic}")
+    public ResponseEntity<Integer> getUserID(@PathVariable("nic") String nic) {
+        User findUser = userRepository.findByNic(nic)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return ResponseEntity.ok(findUser.getUserId());
+    }
+
 
 }
 

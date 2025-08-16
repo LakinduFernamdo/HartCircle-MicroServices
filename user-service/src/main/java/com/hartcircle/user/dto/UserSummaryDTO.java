@@ -2,23 +2,33 @@ package com.hartcircle.user.dto;
 
 public class UserSummaryDTO {
 
+    private Integer userID;
     private String firstName;
     private String lastName;
     private String tpNumber;
     private String address;
     private String userProfile;
 
-    public UserSummaryDTO(String firstName, String lastName, String tpNumber, String address, String userProfile) {
+    public UserSummaryDTO(Integer userID, String firstName, String lastName, String tpNumber, String address, String userProfile) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.tpNumber = tpNumber;
         this.address = address;
         this.userProfile = userProfile;
     }
+
     public UserSummaryDTO(){
 
     }
 
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
 
     public String getUserProfile() {
         return userProfile;
