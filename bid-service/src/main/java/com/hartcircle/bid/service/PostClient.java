@@ -123,5 +123,27 @@ public class PostClient {
         }
     }
 
+    public PostViewDto getBidforMeSummary(Integer postID, String bidderNIC, String authHeader) {
+        try {
+            String url = postServiceUrl + "/api/v1/post/summary/getBidforMepostView/" + postID + "/" + bidderNIC;
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", authHeader);
+
+            HttpEntity<?> entity = new HttpEntity<>(headers);
+
+            ResponseEntity<PostViewDto> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    entity,
+                    PostViewDto.class
+            );
+
+            return response.getBody();
+        } catch (Exception e) {
+            System.out.println("Failed to fetch post info: " + e.getMessage());
+            return null;
+        }
+    }
 
 }

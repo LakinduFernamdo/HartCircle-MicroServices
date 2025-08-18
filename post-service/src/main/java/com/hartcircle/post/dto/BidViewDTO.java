@@ -1,31 +1,17 @@
-package com.hartcircle.bid.dto;
+package com.hartcircle.post.dto;
 
-import com.hartcircle.post.dto.PostViewDto;
 import com.hartcircle.user.dto.UserSummaryDTO;
 
 import java.sql.Date;
 import java.sql.Time;
 
-public class MyBiddedInfo {
+public class BidViewDTO {
 
     private Double biddedAmount;
     private Date mybidedDay;
     private Time myBidedTime;
     private PostViewDto post;
-
-
-    public MyBiddedInfo() {
-    }
-
-
-
-    public PostViewDto getPost() {
-        return post;
-    }
-
-    public void setPost(PostViewDto post) {
-        this.post = post;
-    }
+    private UserSummaryDTO bidder;
 
     public Double getBiddedAmount() {
         return biddedAmount;
@@ -51,6 +37,19 @@ public class MyBiddedInfo {
         this.myBidedTime = myBidedTime;
     }
 
+    public PostViewDto getPost() {
+        return post;
+    }
 
+    public void setPost(PostViewDto post) {
+        this.post = post;
+    }
 
+    public UserSummaryDTO getBidder() {
+        return bidder;
+    }
+
+    public void setBidder(UserSummaryDTO bidder) {
+        this.bidder = bidder;
+    }
 }

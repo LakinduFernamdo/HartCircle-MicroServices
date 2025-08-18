@@ -1,25 +1,48 @@
 package com.hartcircle.user.dto;
 
+import com.hartcircle.user.entity.Ratings;
+
+import java.sql.Date;
+
 public class UserSummaryDTO {
 
     private Integer userID;
     private String firstName;
     private String lastName;
     private String tpNumber;
+    private Date dob;
     private String address;
     private String userProfile;
-
-    public UserSummaryDTO(Integer userID, String firstName, String lastName, String tpNumber, String address, String userProfile) {
+    private Double myAvgRateValue;
+    public UserSummaryDTO(Integer userID,Date DOB, String firstName, String lastName, String tpNumber, String address, String userProfile,Double myAvgRateValue) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.tpNumber = tpNumber;
         this.address = address;
         this.userProfile = userProfile;
+        this.dob=DOB;
+        this.myAvgRateValue = myAvgRateValue;
     }
 
     public UserSummaryDTO(){
 
+    }
+
+    public Double getMyAvgRateValue() {
+        return myAvgRateValue;
+    }
+
+    public void setMyAvgRateValue(Double myAvgRateValue) {
+        this.myAvgRateValue = myAvgRateValue;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public Integer getUserID() {

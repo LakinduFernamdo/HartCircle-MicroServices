@@ -14,4 +14,6 @@ public interface BidRepo extends JpaRepository<BidInformation, Integer> {
     List<BidInformation>findByPostOwnerNIC(String postOwnerNIC);
 
 
+
+
 }

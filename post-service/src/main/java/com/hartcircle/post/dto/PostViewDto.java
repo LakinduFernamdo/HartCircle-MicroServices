@@ -4,6 +4,7 @@ import com.hartcircle.user.dto.UserSummaryDTO;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 public class PostViewDto {
 
@@ -126,4 +127,6 @@ public class PostViewDto {
     public void setUser(UserSummaryDTO user) {
         this.user = user;
     }
+
+
 }

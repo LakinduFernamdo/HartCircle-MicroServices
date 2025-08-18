@@ -4,6 +4,8 @@ import com.hartcircle.bid.dto.MyBiddedInfo;
 import com.hartcircle.bid.entity.BidInformation;
 import com.hartcircle.bid.repo.BidRepo;
 import com.hartcircle.post.dto.PostViewDto;
+
+import com.hartcircle.user.dto.UserSummaryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,21 +19,23 @@ public class GetBidsFormeService {
     private BidRepo bidRepo;
     @Autowired
     private PostClient postClient;
+    @Autowired
+    private UserClient userClient;
 
     public List<MyBiddedInfo> RederBidsforMe(String userNIC, String authHeader) {
-        //render all posts which postOwnerNIC=userNIC
-        List<BidInformation> bids=bidRepo.findByPostOwnerNIC(userNIC);
+        // All bids placed on my posts
+        List<BidInformation> bids = bidRepo.findByPostOwnerNIC(userNIC);
+
         return bids.stream().map(bid -> {
-            MyBiddedInfo dto=new MyBiddedInfo();
+            MyBiddedInfo dto = new MyBiddedInfo();
             dto.setBiddedAmount(bid.getAmount());
-            dto.setMyBidedTime(bid.getBidTime());
             dto.setMybidedDay(bid.getBidDate());
-           // call post-service -> returns PostViewDto with user info already inside the PostViewDTO
-            PostViewDto postView=postClient.getPostSummary(bid.getPostID(),authHeader);
-            System.out.println("Fetched post for bidID " + bid.getBidID() + ": " + postView);
-            // set post data directly
+            dto.setMyBidedTime(bid.getBidTime());
+            PostViewDto postView = postClient.getBidforMeSummary(bid.getPostID(), bid.getBidderNIC(), authHeader);
             dto.setPost(postView);
+
             return dto;
         }).collect(Collectors.toList());
     }
+
 }

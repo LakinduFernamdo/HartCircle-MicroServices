@@ -48,6 +48,29 @@ public class UserClient {
         }
     }
 
+    public UserSummaryDTO getUserSummary(String nic, String authHeader) {
+        try {
+            String url = userServiceUrl + "/api/v1/user/summary/" + nic;
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", authHeader);
+
+            HttpEntity<?> entity = new HttpEntity<>(headers);
+
+            ResponseEntity<UserSummaryDTO> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    entity,
+                    UserSummaryDTO.class
+            );
+
+            return response.getBody();
+        } catch (Exception e) {
+            System.out.println("Failed to fetch user info: " + e.getMessage());
+            return null;
+        }
+    }
+
 
 
 }

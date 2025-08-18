@@ -16,23 +16,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/bid")
-public class GetBidsForMeController { //This class helps  to render who are the people bids for my posts
+public class GetBidsForMeController {
 
     @Autowired
     private GetBidsFormeService getBidsFormeService;
+
     @Autowired
     private HttpServletRequest httpServletRequest;
 
     @GetMapping("/getBidsForMe")
-    public ResponseEntity<List<MyBiddedInfo>>  bidsforme(Authentication authentication){
-        String userNIC=authentication.getName();
-        String authHeader=httpServletRequest.getHeader("Authorization");
-        try{
-         List<MyBiddedInfo>posts=   getBidsFormeService.RederBidsforMe(userNIC,authHeader);
-         return ResponseEntity.ok(posts);
-        }catch(Exception e){
+    public ResponseEntity<List<MyBiddedInfo>> bidsforme(Authentication authentication) {
+        String userNIC = authentication.getName();
+        String authHeader = httpServletRequest.getHeader("Authorization");
+
+        try {
+            List<MyBiddedInfo> posts = getBidsFormeService.RederBidsforMe(userNIC, authHeader);
+            return ResponseEntity.ok(posts);
+        } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
 }
+
