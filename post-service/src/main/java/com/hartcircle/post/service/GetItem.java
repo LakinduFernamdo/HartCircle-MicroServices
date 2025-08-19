@@ -24,7 +24,7 @@ public class GetItem {
         return posts.stream().map(post -> {
             PostViewDto dto = new PostViewDto();
 
-
+            dto.setPostID(post.getPostID());
             dto.setStartTime(post.getStartTime());
             dto.setEndTime(post.getEndTime());
             dto.setStartDate(post.getStartDate());

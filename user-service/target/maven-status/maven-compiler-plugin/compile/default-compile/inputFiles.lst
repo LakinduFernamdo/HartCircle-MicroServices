@@ -20,9 +20,14 @@ C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-serv
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\dto\UserRegisterDTO.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\controller\UserRegister.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\config\AuthController.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\service\PostClient.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\controller\RatingController.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\entity\Ratings.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\repo\RatingRepo.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\config\WebConfig.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\entity\User.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\service\ForgotPwService.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\service\RatingService.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\dto\LoginDTO.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\config\UserController.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\dto\UserSummaryDTO.java
@@ -30,3 +35,4 @@ C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-serv
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\service\DeleteUserService.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\service\JwtClient.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\filter\JwtAuthenticationFilter.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\user-service\src\main\java\com\hartcircle\user\dto\RatingDTO.java
