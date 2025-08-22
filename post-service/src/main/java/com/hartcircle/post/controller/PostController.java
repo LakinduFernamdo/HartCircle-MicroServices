@@ -5,7 +5,7 @@ import com.hartcircle.post.dto.PostViewDto;
 import com.hartcircle.post.entity.Post;
 import com.hartcircle.post.repo.PostRepository;
 import com.hartcircle.post.service.UserClient;
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.post.dto.UserSummaryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package com.hartcircle.bid.service;
 
 
 import com.hartcircle.post.dto.PostViewDto;
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.bid.dto.UserSummaryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

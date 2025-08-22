@@ -1,24 +1,5 @@
-# 🏗️ Build stage
-FROM maven:3.9.10-eclipse-temurin-21 AS builder
-
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
-
-# Copy the entire multi-module project (including parent POM and all services)
-COPY . .
-
-# First install the parent POM (no modules, just parent)
-RUN mvn clean install -N
-
-# Then build only jwt-service and its dependencies
-RUN mvn -pl sms-service -am clean package -DskipTests
-
-# 🚀 Runtime stage
-FROM eclipse-temurin:21-jre-alpine
-
-WORKDIR /app
-
-COPY --from=builder /app/sms-service/target/*.jar app.jar
-
+COPY target/*.jar app.jar
 EXPOSE 8086
-
 ENTRYPOINT ["java", "-jar", "app.jar"]

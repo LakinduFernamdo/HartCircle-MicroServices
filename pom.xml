@@ -11,8 +11,7 @@
     <modules>
         <module>user-service</module>
         <module>jwt-service</module>
-        <module>gateway-service</module>
-        <module>discovery-service</module>
+
         <module>post-service</module>
         <module>bid-service</module>
         <module>sms-service</module>
@@ -50,6 +49,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>

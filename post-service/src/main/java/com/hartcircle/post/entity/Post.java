@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
-import com.hartcircle.user.entity.User;
+
 
 
 @Entity

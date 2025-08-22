@@ -4,7 +4,7 @@ package com.hartcircle.bid.service;
 import com.hartcircle.bid.dto.BidUpdateDTO;
 import com.hartcircle.bid.entity.BidInformation;
 import com.hartcircle.bid.repo.BidRepo;
-import com.hartcircle.post.entity.Post;
+import com.hartcircle.bid.dto.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

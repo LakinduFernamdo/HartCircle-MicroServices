@@ -3,9 +3,9 @@ package com.hartcircle.bid.service;
 
 //check it post exist on Database
 
-import com.hartcircle.post.dto.PostViewDto;
-import com.hartcircle.post.entity.Post;
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.bid.dto.PostViewDto;
+import com.hartcircle.bid.dto.Post;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
-
-import static com.mysql.cj.conf.PropertyKey.logger;
 
 @Service
 public class PostClient {

@@ -1,7 +1,8 @@
 package com.hartcircle.post.service;
 
-import com.hartcircle.user.dto.UserSummaryDTO;
-import com.hartcircle.user.entity.User;
+
+import com.hartcircle.post.dto.UserSummaryDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

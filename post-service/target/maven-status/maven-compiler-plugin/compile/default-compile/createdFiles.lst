@@ -3,6 +3,7 @@ com\hartcircle\post\dto\PostUpdateDTO.class
 com\hartcircle\post\controller\PostController.class
 com\hartcircle\post\service\PublicWallService.class
 com\hartcircle\post\entity\Post.class
+com\hartcircle\post\dto\UserSummaryDTO.class
 com\hartcircle\post\controller\GetMyPostsController.class
 com\hartcircle\post\service\CreatePost.class
 com\hartcircle\post\service\PostUpdateService.class
@@ -14,6 +15,7 @@ com\hartcircle\post\service\UserClient.class
 com\hartcircle\post\controller\PostUpdateController.class
 com\hartcircle\post\config\WebConfig.class
 com\hartcircle\post\filter\JwtAuthenticationFilter.class
+com\hartcircle\post\dto\BidViewDTO.class
 com\hartcircle\post\controller\PostGettingController.class
 com\hartcircle\post\controller\PostImageController.class
 com\hartcircle\post\service\GetItem.class

@@ -1,6 +1,6 @@
 package com.hartcircle.post.dto;
 
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.post.dto.UserSummaryDTO;
 
 import java.sql.Date;
 import java.sql.Time;

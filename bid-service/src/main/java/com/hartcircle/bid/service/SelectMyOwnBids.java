@@ -3,7 +3,7 @@ package com.hartcircle.bid.service;
 import com.hartcircle.bid.dto.MyBiddedInfo;
 import com.hartcircle.bid.entity.BidInformation;
 import com.hartcircle.bid.repo.BidRepo;
-import com.hartcircle.post.dto.PostViewDto;
+import com.hartcircle.bid.dto.PostViewDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

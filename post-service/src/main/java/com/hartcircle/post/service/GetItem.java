@@ -3,7 +3,7 @@ package com.hartcircle.post.service;
 import com.hartcircle.post.dto.PostViewDto;
 import com.hartcircle.post.entity.Post;
 import com.hartcircle.post.repo.PostRepository;
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.post.dto.UserSummaryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

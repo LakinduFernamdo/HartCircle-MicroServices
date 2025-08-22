@@ -1,7 +1,7 @@
 package com.hartcircle.post.dto;
 
 
-import com.hartcircle.user.entity.User;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Time;

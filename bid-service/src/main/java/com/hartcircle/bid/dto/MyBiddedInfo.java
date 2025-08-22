@@ -1,7 +1,7 @@
 package com.hartcircle.bid.dto;
 
-import com.hartcircle.post.dto.PostViewDto;
-import com.hartcircle.user.dto.UserSummaryDTO;
+import com.hartcircle.bid.dto.PostViewDto;
+
 
 import java.sql.Date;
 import java.sql.Time;

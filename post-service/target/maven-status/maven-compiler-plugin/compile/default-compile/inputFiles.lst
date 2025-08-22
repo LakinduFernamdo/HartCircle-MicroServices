@@ -19,6 +19,8 @@ C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-serv
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\PostMain.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\controller\PostController.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\controller\PostDeleteController.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\dto\BidViewDTO.java
+C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\dto\UserSummaryDTO.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\controller\PostUpload.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\config\WebConfig.java
 C:\Users\Lakindu\OneDrive\Desktop\TestCirclix\HartCircle-Microservices\post-service\src\main\java\com\hartcircle\post\service\GetItem.java

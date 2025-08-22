@@ -5,8 +5,7 @@ package com.hartcircle.post.service;
 import com.hartcircle.post.dto.PostData;
 import com.hartcircle.post.entity.Post;
 import com.hartcircle.post.repo.PostRepository;
-import com.hartcircle.user.entity.User;
-import com.hartcircle.user.repo.UserRepository;
+
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
