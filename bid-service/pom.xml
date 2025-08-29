@@ -13,6 +13,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <spring.boot.version>3.2.4</spring.boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,22 +22,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.4</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.2.4</version>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>3.2.4</version>
+            <version>${spring.boot.version}</version>
         </dependency>
 
         <!-- Lombok -->
@@ -60,30 +56,16 @@
             <version>8.3.0</version>
         </dependency>
 
-        <!-- Internal dependency (make sure it's resolvable) -->
-        <dependency>
-            <groupId>com.hartcircle</groupId>
-            <artifactId>post-service</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
+        <!-- Jackson annotations -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.17.3</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.2.4</version>
-            </plugin>
-
             <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -97,10 +79,19 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-            <!-- ADD THIS: Spring Boot Maven Plugin -->
+
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

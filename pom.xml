@@ -15,6 +15,7 @@
         <module>post-service</module>
         <module>bid-service</module>
         <module>sms-service</module>
+        <module>admin-service</module>
     </modules>
 
     <properties>

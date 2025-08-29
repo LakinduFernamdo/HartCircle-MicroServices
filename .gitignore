@@ -13,5 +13,15 @@ Thumbs.db
 # Ignore all application.properties files
 **/application.properties
 
+
 # Ignore build output (target) folders
 target/
+user-service/target
+jwt-service/target
+post-service/target
+bid-service/target
+sms-service/target
+.gitignore
+docker-compose.yml
+
+
