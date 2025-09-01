@@ -1,0 +1,87 @@
+version: "3.9"
+
+services:
+  mymysql-db:
+    image: mysql:8
+    container_name: mymysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  user-service:
+    build:
+      context: ./HartCircle-MicroServices/user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mymysql-db:3306/${USER_DB}
+      SPRING_DATASOURCE_USERNAME: ${USER_DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${USER_DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - mymysql-db
+
+  post-service:
+    build:
+      context: ./HartCircle-MicroServices/post-service
+      dockerfile: Dockerfile
+    container_name: post-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mymysql-db:3306/${POST_DB}
+      SPRING_DATASOURCE_USERNAME: ${POST_DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POST_DB_PASSWORD}
+    depends_on:
+      - mymysql-db
+      - user-service
+
+  bid-service:
+    build:
+      context: ./HartCircle-MicroServices/bid-service
+      dockerfile: Dockerfile
+    container_name: bid-service
+    ports:
+      - "8087:8087"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mymysql-db:3306/${BID_DB}
+      SPRING_DATASOURCE_USERNAME: ${BID_DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${BID_DB_PASSWORD}
+    depends_on:
+      - mymysql-db
+      - user-service
+      - post-service
+
+  sms-service:
+    build:
+      context: ./HartCircle-MicroServices/sms-service
+      dockerfile: Dockerfile
+    container_name: sms-service
+    ports:
+      - "8086:8086"
+    environment:
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
+      TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - jwt-service
+
+  jwt-service:
+    build:
+      context: ./HartCircle-MicroServices/jwt-service
+      dockerfile: Dockerfile
+    container_name: jwt-service
+    ports:
+      - "8082:8082"
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+
+volumes:
+  mysql_data:
