@@ -46,9 +46,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { //Ensures th
         final String token;
         final String nic;
 
-        if (authHeader == null ) {
-            System.out.println("⛔ No valid Authorization header found!");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
+            System.out.println("Auth Header in Filter = " + authHeader);
+
             return;
         }
 

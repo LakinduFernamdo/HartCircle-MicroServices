@@ -14,6 +14,12 @@ Thumbs.db
 **/application.properties
 
 
+user-service/.env
+jwt-service/.env
+post-service/.env
+bid-service/.env
+sms-service/.env
+
 # Ignore build output (target) folders
 target/
 user-service/target
@@ -21,7 +27,9 @@ jwt-service/target
 post-service/target
 bid-service/target
 sms-service/target
+admin-service/target
+.env
 .gitignore
-docker-compose.yml
+
 
 
