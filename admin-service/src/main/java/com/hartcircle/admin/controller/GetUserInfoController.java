@@ -21,7 +21,19 @@ public class GetUserInfoController {
     public ResponseEntity<?> getUserinfo(@RequestParam("nic") String nic){
 
         try{
-            UserSummaryDTO filteredUser=getUserdeatailsService.sortNIC(nic);
+            UserSummaryDTO filteredUserbyNIC=getUserdeatailsService.sortNIC(nic);
+            return ResponseEntity.ok(filteredUserbyNIC);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/user_info/byTPNumber")
+    public ResponseEntity<?> getUserinfoByTPnumber(@RequestParam("tpNumber") String tpNumber){
+
+        try{
+            UserSummaryDTO filteredUser=getUserdeatailsService.sortMobileNumber(tpNumber);
             return ResponseEntity.ok(filteredUser);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

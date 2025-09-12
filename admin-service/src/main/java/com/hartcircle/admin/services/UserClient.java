@@ -15,7 +15,7 @@ public class UserClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    //this is comming from user-service /UserController
+    //this listen to UserController from user-service /UserController
     public UserSummaryDTO getUserInformation(String nic){
         try{
             String url=userServiceUrl+ "/api/v1/user/summary/" +nic;
@@ -25,4 +25,16 @@ public class UserClient {
             return null;
         }
     }
+
+   //this listen to UserController which on user-service
+    public UserSummaryDTO getUserInformationwithTpNumber(String tpNumber){
+        try{
+            String url=userServiceUrl+ "/api/v1/user/userdata/" +tpNumber;
+            return restTemplate.getForObject(url, UserSummaryDTO.class);
+        }catch(Exception e){
+            System.out.println("Failed to fetch user info: " + e.getMessage());
+            return null;
+        }
+    }
+
 }

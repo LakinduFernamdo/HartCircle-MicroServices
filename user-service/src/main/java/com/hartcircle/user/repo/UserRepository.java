@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByNic(String nic);
     Optional<User> findByEmail(String email);
+    Optional<User> findByTpNumber(String tpNumber);
+
 
     @Query("SELECT u FROM User u WHERE u.nic = :nic AND u.id <> :userID")
     Optional<User> findByNicAndNotUserId(String nic, Integer userID);
