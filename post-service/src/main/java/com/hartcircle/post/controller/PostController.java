@@ -1,6 +1,7 @@
 package com.hartcircle.post.controller;
 
 
+import com.hartcircle.post.dto.PostContent;
 import com.hartcircle.post.dto.PostViewDto;
 import com.hartcircle.post.entity.Post;
 import com.hartcircle.post.repo.PostRepository;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -71,7 +73,7 @@ public class PostController {
         return ResponseEntity.ok(dto);
     }
 
-//Get who bid for me
+    //Get who bid for me
     @GetMapping("/summary/getBidforMepostView/{postID}/{bidderNIC}")
     public ResponseEntity<PostViewDto> getBidforMePostView(@PathVariable Integer postID,
                                                            @PathVariable String bidderNIC,
@@ -110,7 +112,37 @@ public class PostController {
     }
 
 
+    @GetMapping("/admin/getinforbyNIC/{nic}")
+    public ResponseEntity<List<PostContent>> getPostData(@PathVariable String nic) {
+        try {
+            List<Post> posts = postRepository.findByUserNIC(nic);
 
+            if (posts.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+
+            // Convert Post → PostContent
+            List<PostContent> dtos = posts.stream().map(post -> {
+                PostContent postContent = new PostContent();
+                postContent.setPostID(post.getPostID());
+                postContent.setBidLimit(post.getBidLimit());
+                postContent.setDescription(post.getDescription());
+                postContent.setEndDate(post.getEndDate());
+                postContent.setEndTime(post.getEndTime());
+                postContent.setStartDate(post.getStartDate());
+                postContent.setStartTime(post.getStartTime());
+                postContent.setItemType(post.getItemType());
+                postContent.setImage1Url("http://localhost:8081/api/v1/post/image/" + post.getPostID() + "/1");
+                postContent.setImage2Url("http://localhost:8081/api/v1/post/image/" + post.getPostID() + "/2");
+                return postContent;
+            }).toList();
+
+            return ResponseEntity.ok(dtos);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
 
 }

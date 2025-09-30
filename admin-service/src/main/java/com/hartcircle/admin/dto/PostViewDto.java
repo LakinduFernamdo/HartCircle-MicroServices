@@ -1,9 +1,9 @@
-package com.hartcircle.post.dto;
+package com.hartcircle.admin.dto;
 
 import java.sql.Date;
 import java.sql.Time;
 
-public class PostContent {
+public class PostViewDto {
 
     private Integer postID;
     private Time startTime;

@@ -30,6 +30,6 @@ sms-service/target
 admin-service/target
 .env
 .gitignore
-
+readme.txt
 
 
