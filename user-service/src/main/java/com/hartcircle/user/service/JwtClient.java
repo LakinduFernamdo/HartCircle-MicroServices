@@ -1,7 +1,7 @@
 package com.hartcircle.user.service;
 
-import com.hartcircle.jwt.Dto.JwtRequest;
-import com.hartcircle.jwt.Dto.JwtResponse;
+import com.hartcircle.user.dto.JwtRequest;
+import com.hartcircle.user.dto.JwtResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
