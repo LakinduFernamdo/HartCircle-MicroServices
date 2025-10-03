@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jwt-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jwt-service
+  template:
+    metadata:
+      labels:
+        app: jwt-service
+    spec:
+      containers:
+        - name: jwt-service
+          image: jwt-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: hartcircle-secrets
+                  key: JWT_SECRET

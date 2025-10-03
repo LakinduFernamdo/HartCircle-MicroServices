@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post-service
+  template:
+    metadata:
+      labels:
+        app: post-service
+    spec:
+      containers:
+        - name: post-service
+          image: post-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          env:
+            # Database connection
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service:3306/postdata
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: hartcircle-config
+                  key: POST_DB_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hartcircle-secrets
+                  key: POST_DB_PASSWORD
+
+            # Service URLs
+            - name: JWT_SERVICE_URL
+              value: http://jwt-service:8082
+            - name: USER_SERVICE_URL
+              value: http://user-service:8080
+
+          envFrom:
+            - configMapRef:
+                name: hartcircle-config
