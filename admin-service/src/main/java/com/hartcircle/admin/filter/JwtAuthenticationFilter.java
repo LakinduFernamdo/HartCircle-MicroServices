@@ -15,43 +15,39 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
+
+
+
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtClient jwtClient;
 
+    @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        final String authHeader=request.getHeader("Authorization");
+        final String authHeader = request.getHeader("Authorization");
 
-        if(authHeader ==null || authHeader.startsWith("Bearer ")){
-            filterChain.doFilter(request,response);
-            System.out.println("Auth Header in Filter = "+authHeader);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
             return;
         }
 
-        String token=authHeader.substring(7);
+        String token = authHeader.substring(7);
         String nic = jwtClient.validateTokenAndGetNic(token);
-        System.out.println("Token = " + token);
-        System.out.println("NIC = " + nic);
 
         if (nic != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                    nic, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                    nic, null, List.of(new SimpleGrantedAuthority("ROLE_ADMIN")) // <-- use ROLE_ADMIN if needed
             );
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }
 
         filterChain.doFilter(request, response);
-
-
-
-
     }
-
-
 }
+

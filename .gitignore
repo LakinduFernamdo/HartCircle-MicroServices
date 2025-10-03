@@ -33,3 +33,5 @@ admin-service/target
 readme.txt
 
 
+k8s/secrets.yaml
+k8s/configmap.yaml

@@ -6,4 +6,5 @@ import lombok.Data;
 public class SmsDTO {
     private String to;
     private String body;
+
 }
