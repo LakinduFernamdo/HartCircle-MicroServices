@@ -7,6 +7,6 @@ spec:
     app: user-service
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: NodePort
+      port: 8080          # ClusterIP port
+      targetPort: 8080    # Container port
+  type: ClusterIP        # Must be ClusterIP for Ingress

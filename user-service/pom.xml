@@ -77,6 +77,14 @@
             <version>3.0.0</version>
         </dependency>
 
+        <!--Camunda dependency -->
+        <dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+            <version>7.21.0</version>
+        </dependency>
+
+
         <!-- IntelliJ annotations (optional) -->
         <dependency>
             <groupId>org.jetbrains</groupId>

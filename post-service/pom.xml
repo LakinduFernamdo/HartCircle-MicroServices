@@ -42,6 +42,13 @@
             <artifactId>annotations</artifactId>
             <version>26.0.2</version>
         </dependency>
+        <!-- camunda -->
+        <dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+            <version>7.21.0</version>
+        </dependency>
+
 
         <!-- Dependency on user-service if you need to reference it -->
         <dependency>
